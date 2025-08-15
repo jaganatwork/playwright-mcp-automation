@@ -1,0 +1,50 @@
+{
+  "name": "Playwright MCP Test Environment",
+  "image": "mcr.microsoft.com/playwright:v1.48.0-noble",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-playwright.playwright",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "ms-vscode.vscode-typescript-next",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
+      ],
+      "settings": {
+        "github.copilot.enable": {
+          "*": true,
+          "yaml": true,
+          "markdown": true
+        },
+        "github.copilot.chat.enabled": true,
+        "playwright.showTrace": true,
+        "playwright.reuseBrowser": true,
+        "playwright.showBrowser": false,
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+  "forwardPorts": [3000, 8080, 9323],
+  "portsAttributes": {
+    "3000": {
+      "label": "MCP Server",
+      "protocol": "https"
+    },
+    "9323": {
+      "label": "Playwright Report",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "postCreateCommand": "chmod +x .devcontainer/setup.sh && .devcontainer/setup.sh",
+  "remoteEnv": {
+    "PLAYWRIGHT_BROWSERS_PATH": "/ms-playwright",
+    "NODE_ENV": "test"
+  }
+}
