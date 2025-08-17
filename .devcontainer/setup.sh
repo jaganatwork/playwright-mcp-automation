@@ -7,11 +7,11 @@ echo "👤 User: $(whoami)"
 
 # Update package lists
 echo "📦 Updating system packages..."
-sudo apt-get update -qq
+apt-get update -qq
 
 # Install required system dependencies for browsers
 echo "🔧 Installing browser dependencies..."
-sudo apt-get install -y --no-install-recommends \
+apt-get install -y --no-install-recommends \
     libnss3 \
     libatk1.0-0 \
     libatk-bridge2.0-0 \
@@ -23,7 +23,7 @@ sudo apt-get install -y --no-install-recommends \
     libxrandr2 \
     libgbm1 \
     libgtk-3-0 \
-    libasound2
+    libasound2t64
 
 # Create project directories
 echo "📁 Creating project structure..."
