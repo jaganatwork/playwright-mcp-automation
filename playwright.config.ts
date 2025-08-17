@@ -17,7 +17,8 @@ export default defineConfig({
     ['list']
   ],
   use: {
-    baseURL: 'https://practicetestautomation.com/practice-test-login/',
+    
+    baseURL: 'https://practicetestautomation.com/practice-test-login',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
