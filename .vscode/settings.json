@@ -1,0 +1,28 @@
+{
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": false
+  },
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  
+  "chat.agent.enabled": true,
+  "github.copilot.chat.agent.runTasks": true,
+  "github.copilot.chat.agent.autoFix": true,
+  "chat.agent.maxRequests": 15,
+  
+  "chat.mcp.discovery.enabled": true,
+  "chat.tools.autoApprove": false,
+  
+  "playwright.showTrace": true,
+  "playwright.reuseBrowser": true,
+  "playwright.showBrowser": false,
+  
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/test-results": true,
+    "**/playwright-report": true
+  },
+  
+  "telemetry.telemetryLevel": "off"
+}

@@ -42,7 +42,9 @@
       "onAutoForward": "openPreview"
     }
   },
-  "postCreateCommand": "chmod +x .devcontainer/setup.sh && .devcontainer/setup.sh",
+ "postCreateCommand": "chmod +x .devcontainer/setup.sh && bash .devcontainer/setup.sh",
+  "postStartCommand": "echo 'Codespace started. Run: npm test'",
+  "postAttachCommand": "echo 'Ready! Directories: ' && ls -d */ | head -5",
   "remoteEnv": {
     "PLAYWRIGHT_BROWSERS_PATH": "/ms-playwright",
     "NODE_ENV": "test"
