@@ -9,6 +9,14 @@ echo "👤 User: $(whoami)"
 echo "📦 Updating system packages..."
 apt-get update -qq
 
+# Install virtual display for headed tests (if needed)
+apt-get install -y xvfb x11-utils x11-xserver-utils
+
+# Set up virtual display
+export DISPLAY=:99
+Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+
+
 # Install required system dependencies for browsers
 echo "🔧 Installing browser dependencies..."
 apt-get install -y --no-install-recommends \
@@ -60,6 +68,9 @@ npm install -D @playwright/test@latest
 echo "🌐 Installing browsers (Chromium, Firefox, WebKit)..."
 npx playwright install chromium firefox webkit
 npx playwright install-deps chromium firefox webkit
+
+# Install MCP Playwright server
+npm install -g @playwright/mcp@latest
 
 # Install additional useful packages
 echo "📚 Installing additional packages..."
@@ -173,6 +184,11 @@ echo "✅ Verifying installation..."
 echo "Node version: $(node --version)"
 echo "NPM version: $(npm --version)"
 npx playwright --version || echo "⚠️ Playwright verification failed"
+
+npx -y @playwright/mcp@latest --version || echo "⚠️ Playwright MCP verification failed"
+# Configure MCP server for VS Code in Codespaces
+echo "🛠️ Configuring MCP server for VS Code in Codespaces..."
+code --add-mcp '{"name":"playwright","command":"npx","args":["@playwright/mcp@latest"]}' || echo "⚠️ MCP server configuration failed"
 
 # ADD: Final verification
 echo "🔍 Final Check:"

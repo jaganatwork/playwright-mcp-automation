@@ -47,6 +47,20 @@
   "postAttachCommand": "echo 'Ready! Directories: ' && ls -d */ | head -5",
   "remoteEnv": {
     "PLAYWRIGHT_BROWSERS_PATH": "/ms-playwright",
-    "NODE_ENV": "test"
+    "NODE_ENV": "test",
+    "DISPLAY": ":99"
+
+  },
+  "runArgs": [
+    "--init",
+    "--ipc=host"
+  ],
+  "mounts": [
+    "source=playwright-cache,target=/home/vscode/.cache/ms-playwright,type=volume",
+    "source=test-results,target=${containerWorkspaceFolder}/test-results,type=volume"
+  ],  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb",
+    "storage": "32gb"
   }
 }
